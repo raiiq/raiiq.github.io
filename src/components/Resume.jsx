@@ -183,7 +183,7 @@ const Resume = () => {
     };
 
     return (
-        <section className="py-12 sm:py-20 md:py-32 px-3 sm:px-6 md:px-12 lg:px-20 relative min-h-screen flex flex-col justify-center overflow-hidden bg-black" id="resume">
+        <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 md:px-12 lg:px-20 relative min-h-screen flex flex-col justify-center overflow-hidden bg-black" id="resume">
             {/* Ambient System Grid - Hidden on mobile for performance */}
             <div className="hidden sm:block absolute inset-0 pointer-events-none opacity-20">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
@@ -208,7 +208,7 @@ const Resume = () => {
                             <span className="text-primary text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] sm:tracking-[0.6em] halation">Intelligence System // V.04</span>
                         </motion.div>
 
-                        <h2 className="text-[clamp(2.5rem,10vw,8rem)] font-black text-white uppercase tracking-tighter leading-[0.85] mb-4 sm:mb-6 shadow-black drop-shadow-2xl">
+                        <h2 className="text-[clamp(2rem,10vw,8rem)] sm:text-[clamp(2.5rem,10vw,8rem)] font-black text-white uppercase tracking-tighter leading-[0.85] mb-4 sm:mb-6 shadow-black drop-shadow-2xl">
                             MASTER<br />
                             <span className="text-white/20 hover:text-white transition-colors duration-1000 cursor-default">DOSSIER.</span>
                         </h2>

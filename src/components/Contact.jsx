@@ -54,7 +54,7 @@ const Contact = () => {
     };
 
     return (
-        <footer className="relative pt-16 sm:pt-24 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 border-t border-white/5" id="contact">
+        <footer className="relative pt-16 sm:pt-24 md:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 md:px-12 border-t border-white/5" id="contact">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 md:gap-20">
 
                 {/* Contact Info & Socials */}
@@ -64,7 +64,7 @@ const Contact = () => {
                             <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(255,59,48,0.5)]" />
                             <span className="text-primary text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-glow-red">Establish Connection</span>
                         </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6 sm:mb-8 text-glow-strong halation">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-6 sm:mb-8 text-glow-strong halation px-1 sm:px-0">
                             Let's <br /> <span className="text-white/20">Sync.</span>
                         </h2>
                         <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed max-w-sm uppercase tracking-widest opacity-60">

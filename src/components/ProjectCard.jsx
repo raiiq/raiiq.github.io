@@ -19,7 +19,7 @@ const ProjectCard = ({ project, onClick }) => {
     return (
         <motion.div
             onClick={() => onClick(project)}
-            className="group relative w-full aspect-video overflow-hidden rounded-[1.5rem] md:rounded-[2.5rem] cursor-pointer bg-black/40 border border-white/5 shadow-2xl"
+            className="group relative w-full aspect-[4/3] sm:aspect-video overflow-hidden rounded-[1.2rem] sm:rounded-[2rem] md:rounded-[2.5rem] cursor-pointer bg-black/40 border border-white/5 shadow-2xl"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -88,7 +88,7 @@ const ProjectCard = ({ project, onClick }) => {
                     {/* Title with dedicated breathing room */}
                     <div className="flex flex-col gap-1.5">
                         <h3
-                            className="text-lg sm:text-2xl md:text-2xl lg:text-3xl font-black text-white leading-[1.1] uppercase tracking-tighter text-glow-strong halation break-words max-w-[95%]"
+                            className="text-base sm:text-2xl md:text-2xl lg:text-3xl font-black text-white leading-[1.1] uppercase tracking-tighter text-glow-strong halation break-words max-w-[95%]"
                             style={{ fontFamily: project.font || 'IBM Plex Sans Arabic' }}
                         >
                             {project.title}

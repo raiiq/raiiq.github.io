@@ -63,7 +63,7 @@ const Hero = () => {
                     </span>
                 </div>
 
-                <h1 className="text-[clamp(2.5rem,12vw,10rem)] font-black text-white leading-[0.85] tracking-tighter uppercase text-glow-strong halation mb-6 sm:mb-10">
+                <h1 className="text-[clamp(1.8rem,10vw,10rem)] sm:text-[clamp(2.5rem,12vw,10rem)] font-black text-white leading-[0.85] tracking-tighter uppercase text-glow-strong halation mb-6 sm:mb-10">
                     BARAA <br />
                     <span className="text-white/10 hover:text-white transition-colors duration-1000">BASIM.</span>
                 </h1>
@@ -73,12 +73,12 @@ const Hero = () => {
                     {settings?.hero_bio || "Iraq-Based Visionary crafting cutting-edge cinematic sequences."}
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto px-2 sm:px-0 mt-4 sm:mt-0">
                     <motion.button
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowreelOpen(true)}
-                        className="w-full sm:w-auto px-6 sm:px-12 py-5 sm:py-6 bg-white text-black font-black rounded-2xl transition-all shadow-2xl hover:shadow-primary/40 uppercase tracking-widest text-[10px] sm:text-xs flex items-center justify-center gap-3 border border-white touch-target"
+                        className="w-full sm:w-auto px-6 sm:px-12 py-4 sm:py-6 bg-white text-black font-black rounded-xl sm:rounded-2xl transition-all shadow-2xl hover:shadow-primary/40 uppercase tracking-widest text-[9px] sm:text-xs flex items-center justify-center gap-3 border border-white touch-target"
                     >
                         <Play className="w-4 h-4 fill-current" />
                         <span>Initialize showreel</span>
@@ -89,14 +89,14 @@ const Hero = () => {
                             const el = document.getElementById('resume');
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }}
-                        className="w-full sm:w-auto px-6 sm:px-12 py-5 sm:py-6 bg-white/[0.05] border border-white/10 hover:border-white/20 text-white font-black rounded-2xl transition-all backdrop-blur-md uppercase tracking-widest text-[10px] sm:text-xs flex items-center justify-center touch-target"
+                        className="w-full sm:w-auto px-6 sm:px-12 py-4 sm:py-6 bg-white/[0.05] border border-white/10 hover:border-white/20 text-white font-black rounded-xl sm:rounded-2xl transition-all backdrop-blur-md uppercase tracking-widest text-[9px] sm:text-xs flex items-center justify-center touch-target"
                     >
                         Access Dossier
                     </button>
 
                     <button
                         onClick={scrollToWork}
-                        className="w-full sm:w-auto px-6 sm:px-12 py-5 sm:py-6 bg-black border border-white/5 hover:border-white/10 text-gray-500 font-black rounded-2xl transition-all uppercase tracking-widest text-[10px] sm:text-xs flex items-center justify-center touch-target"
+                        className="w-full sm:w-auto px-6 sm:px-12 py-4 sm:py-6 bg-black border border-white/5 hover:border-white/10 text-gray-500 font-black rounded-xl sm:rounded-2xl transition-all uppercase tracking-widest text-[9px] sm:text-xs flex items-center justify-center touch-target"
                     >
                         Operational Archive
                     </button>
