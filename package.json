@@ -2,7 +2,7 @@
   "name": "cv-site",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://raiiq.github.io/Baraa-Basim-portfolio/",
+  "homepage": "https://baraabasim.site/",
   "type": "module",
   "scripts": {
     "dev": "vite",
