@@ -50,8 +50,8 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async () => {
-        // Use the current URL minus the hash to ensure we return to the correct sub-path (especially for GitHub Pages)
-        const currentUrl = window.location.href.split('#')[0];
+        // Use origin to ensure a clean redirect to the root section.
+        const currentUrl = window.location.origin;
         console.log('Initiating login with redirect to:', currentUrl);
 
         const { error } = await supabase.auth.signInWithOAuth({

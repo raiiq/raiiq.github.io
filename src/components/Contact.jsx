@@ -1,7 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Instagram, Linkedin, Youtube, Twitter, Send } from 'lucide-react';
+import { Mail, Instagram, Linkedin, Youtube, Twitter, Send, ShieldCheck, Lock, UserCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Contact = () => {
@@ -17,6 +17,8 @@ const Contact = () => {
                 name: user.user_metadata?.full_name || user.user_metadata?.name || '',
                 email: user.email || ''
             }));
+        } else {
+            setFormState({ name: '', email: '', message: '' });
         }
     }, [user]);
 
@@ -32,8 +34,8 @@ const Contact = () => {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: formState.name,
-                    email: formState.email,
+                    name: user?.user_metadata?.full_name || user?.user_metadata?.name || formState.name,
+                    email: user?.email || formState.email,
                     message: formState.message
                 })
             });
@@ -109,62 +111,74 @@ const Contact = () => {
                 <div className="bg-white/[0.02] sm:backdrop-blur-[50px] border border-white/5 p-6 sm:p-10 md:p-14 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] shadow-2xl relative overflow-hidden group">
                     <div className="hidden sm:block absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none" />
 
-                    {!user && (
-                        <div className="flex justify-center mb-8 sm:mb-10 relative z-10">
-                            <button
-                                onClick={login}
-                                className="flex items-center gap-3 bg-white text-black px-6 sm:px-8 py-3 rounded-xl sm:rounded-2xl font-black uppercase tracking-widest text-[9px] sm:text-[10px] hover:scale-105 transition-all shadow-xl touch-target"
-                            >
-                                <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
-                                Authenticate to Send
-                            </button>
-                        </div>
-                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-8 relative z-10">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
-                            <div className="space-y-2">
-                                <label className="text-[9px] sm:text-[10px] font-black text-gray-600 uppercase tracking-[0.15em] sm:tracking-[0.2em] pl-1">Identity</label>
-                                <input
-                                    type="text"
-                                    required
-                                    value={formState.name}
-                                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                                    className="w-full bg-white/[0.05] border border-white/5 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white font-black uppercase tracking-tighter focus:outline-none focus:border-primary/50 transition-all placeholder:text-white/10 text-sm sm:text-base touch-target"
-                                    placeholder="Enter Name"
-                                />
+                        {user ? (
+                            <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-4 sm:p-6 flex items-center gap-4 sm:gap-6 group/identity transition-all hover:border-primary/30">
+                                <div className="relative">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 border-primary/20 bg-black/40 flex items-center justify-center">
+                                        {user.user_metadata?.avatar_url ? (
+                                            <img src={user.user_metadata.avatar_url} alt="Profile" className="w-full h-full object-cover opacity-80 group-hover/identity:opacity-100 transition-opacity" />
+                                        ) : (
+                                            <UserCheck size={24} className="text-primary/40" />
+                                        )}
+                                    </div>
+                                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-primary rounded-full border-2 border-black flex items-center justify-center shadow-lg">
+                                        <ShieldCheck size={10} className="text-white" />
+                                    </div>
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-[9px] sm:text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-1">Verified Identity</p>
+                                    <h3 className="text-white font-black uppercase tracking-tighter truncate text-sm sm:text-lg">
+                                        {user.user_metadata?.full_name || user.user_metadata?.name || 'Authorized Client'}
+                                    </h3>
+                                    <p className="text-gray-500 font-bold text-[10px] sm:text-xs truncate">{user.email}</p>
+                                </div>
+                                <div className="hidden sm:flex flex-col items-end opacity-20 group-hover/identity:opacity-40 transition-opacity">
+                                    <Lock size={20} className="text-white" />
+                                    <span className="text-[8px] font-black uppercase mt-1">Encrypted</span>
+                                </div>
                             </div>
-
-                            <div className="space-y-2">
-                                <label className="text-[9px] sm:text-[10px] font-black text-gray-600 uppercase tracking-[0.15em] sm:tracking-[0.2em] pl-1">Endpoint</label>
-                                <input
-                                    type="email"
-                                    required
-                                    value={formState.email}
-                                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                                    className="w-full bg-white/[0.05] border border-white/5 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white font-bold tracking-tight focus:outline-none focus:border-primary/50 transition-all placeholder:text-white/10 text-sm sm:text-base touch-target"
-                                    placeholder="Enter Email"
-                                />
+                        ) : (
+                            <div className="bg-white/[0.03] border border-dashed border-white/10 rounded-2xl p-8 sm:p-12 text-center space-y-6">
+                                <div className="w-16 h-16 bg-white/[0.05] rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/5">
+                                    <Lock size={32} className="text-gray-600" />
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="text-white font-black uppercase tracking-wider text-sm sm:text-base italic">Access Restricted</h3>
+                                    <p className="text-gray-500 text-[10px] sm:text-xs font-bold leading-relaxed max-w-[200px] mx-auto uppercase">
+                                        Please link your Google account to establish a secure transmission link.
+                                    </p>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={login}
+                                    className="inline-flex items-center gap-3 bg-white text-black px-6 sm:px-8 py-3 rounded-xl sm:rounded-2xl font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-xl active:scale-95"
+                                >
+                                    <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
+                                    Link Google ID
+                                </button>
                             </div>
-                        </div>
+                        )}
 
-                        <div className="space-y-2">
+                        <div className={`space-y-2 transition-all duration-500 ${user ? 'opacity-100' : 'opacity-20 pointer-events-none grayscale'}`}>
                             <label className="text-[9px] sm:text-[10px] font-black text-gray-600 uppercase tracking-[0.15em] sm:tracking-[0.2em] pl-1">Transmission Data</label>
                             <textarea
                                 rows={4}
                                 required
+                                disabled={!user}
                                 value={formState.message}
                                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                                 className="w-full bg-white/[0.05] border border-white/5 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white font-medium focus:outline-none focus:border-primary/50 transition-all resize-none placeholder:text-white/10 text-sm sm:text-base"
-                                placeholder="Describe the mission scope..."
+                                placeholder={user ? "Describe the mission scope..." : "Identity Link Required"}
                             />
                         </div>
 
                         <button
                             type="submit"
-                            disabled={status === 'submitting'}
+                            disabled={status === 'submitting' || !user}
                             className={`w-full font-black py-4 sm:py-5 rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-3 sm:gap-4 group disabled:opacity-50 uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] shadow-2xl touch-target ${status === 'error' ? 'bg-red-500 text-white' : 'bg-white text-black hover:bg-primary hover:text-white'
-                                }`}
+                                } ${!user ? 'hidden' : ''}`}
                         >
                             {status === 'submitting' ? 'Transmitting...' :
                                 status === 'success' ? 'Transmission Complete' :
@@ -183,7 +197,13 @@ const Contact = () => {
                     &copy; {new Date().getFullYear()} BARAA BASIM / CI-ALPHA OPS.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500">
-                    <Link to="/admin" className="hover:text-primary transition-colors">System Console</Link>
+                    <div className="flex items-center gap-2 text-primary/60 border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
+                        <ShieldCheck size={10} />
+                        <span>Guaranteed Encrypted & Secure</span>
+                    </div>
+                    <Link to="/admin" className="hover:text-primary transition-colors flex items-center gap-1">
+                        System Console
+                    </Link>
                     <span>Precision Interface V.2.0</span>
                     <span>All Rights Encrypted</span>
                 </div>

@@ -34,7 +34,7 @@ const Dashboard = () => {
                 >
                     <Settings className="w-16 h-16 text-primary mx-auto mb-6 opacity-50" />
                     <h1 className="text-2xl font-bold mb-4 uppercase tracking-widest">Restricted Access</h1>
-                    <p className="text-gray-400 mb-8">This portal is reserved for high-level cinematic operations. Please authenticate with administrator credentials.</p>
+                    <p className="text-gray-400 mb-8">This portal is reserved for high-level cinematic operations. Please sign in with administrator credentials.</p>
                     <Link to="/" className="inline-block px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-primary hover:text-white transition-all">
                         Return to Site
                     </Link>
