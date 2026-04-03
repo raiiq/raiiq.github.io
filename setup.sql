@@ -63,9 +63,9 @@ CREATE POLICY "Allow public read experience" ON experience FOR SELECT USING (tru
 CREATE POLICY "Allow public read skills" ON skills FOR SELECT USING (true);
 CREATE POLICY "Allow public read site_settings" ON site_settings FOR SELECT USING (true);
 
--- CREATE POLICIES (Allow only authenticated users to write)
--- Note: In a production app, you'd specify your email, but for now this allows any authenticated user (you)
-CREATE POLICY "Allow admin write projects" ON projects FOR ALL TO authenticated USING (true);
-CREATE POLICY "Allow admin write experience" ON experience FOR ALL TO authenticated USING (true);
-CREATE POLICY "Allow admin write skills" ON skills FOR ALL TO authenticated USING (true);
-CREATE POLICY "Allow admin write site_settings" ON site_settings FOR ALL TO authenticated USING (true);
+-- CREATE POLICIES (Allow only YOU to write)
+-- Note: Replace 'YOUR-UUID-HERE' with your actual User ID from the Supabase Authentication dashboard
+CREATE POLICY "Allow admin write projects" ON projects FOR ALL TO authenticated USING (auth.uid() = 'YOUR-UUID-HERE');
+CREATE POLICY "Allow admin write experience" ON experience FOR ALL TO authenticated USING (auth.uid() = 'YOUR-UUID-HERE');
+CREATE POLICY "Allow admin write skills" ON skills FOR ALL TO authenticated USING (auth.uid() = 'YOUR-UUID-HERE');
+CREATE POLICY "Allow admin write site_settings" ON site_settings FOR ALL TO authenticated USING (auth.uid() = 'YOUR-UUID-HERE');
