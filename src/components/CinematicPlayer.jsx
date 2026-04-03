@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Maximize, Loader2 } from 'lucide-react';
 
 const CinematicPlayer = ({ videoUrl, title, initialFullscreen }) => {
