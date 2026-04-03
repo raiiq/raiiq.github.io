@@ -86,7 +86,7 @@ const Navbar = () => {
                                     <div className="flex flex-col items-center gap-4 min-w-[180px]">
                                         <div className="p-4 bg-white rounded-2xl shadow-inner">
                                             <QRCodeCanvas
-                                                value={window.location.href}
+                                                value="https://baraabasim.site"
                                                 size={140}
                                                 level={"H"}
                                                 includeMargin={false}
