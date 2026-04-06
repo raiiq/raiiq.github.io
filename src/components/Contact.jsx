@@ -205,10 +205,16 @@ const Contact = () => {
                 <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500 text-center md:text-left">
                     &copy; {new Date().getFullYear()} BARAA BASIM / CI-ALPHA OPS.
                 </p>
-                <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500">
-                    <div className="flex items-center gap-2 text-primary/60 border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
+                <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-500">
+                    <div className="flex items-center gap-2 text-primary/60 border border-primary/20 px-3 py-1.5 rounded-full bg-primary/5">
                         <ShieldCheck size={10} />
                         <span>Guaranteed Encrypted & Secure</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white/[0.03] backdrop-blur-[80px] border border-white/10 px-3 py-1.5 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)] opacity-70 hover:opacity-100 hover:bg-white/[0.08] transition-all group">
+                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-[#F38020] group-hover:drop-shadow-[0_0_8px_rgba(243,128,32,0.8)] transition-all">
+                            <path d="M16.94 9.176c-.443-4.14-3.66-7.14-7.44-7.14-3.13 0-5.83 2.11-6.9 4.96C1.19 7.37.1 8.65.1 10.3c0 2.1 1.7 3.82 3.8 3.82h15.22c2.69 0 4.88-2.19 4.88-4.88 0-2.48-1.85-4.52-4.2-4.84l-.86-.02z"/>
+                        </svg>
+                        <span className="text-[8px] sm:text-[9px] font-black tracking-[0.1em] sm:tracking-[0.2em] uppercase text-gray-300 transform translate-y-[1px]">Protected by Cloudflare</span>
                     </div>
                     <Link to="/admin" className="hover:text-primary transition-colors flex items-center gap-1">
                         System Console
